@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppView } from '../types';
-import { FileText, LayoutTemplate, Sparkles } from 'lucide-react';
+import { FileText, LayoutTemplate, Sparkles, FileDown } from 'lucide-react';
 
 interface HeaderProps {
   currentView: AppView;
@@ -24,9 +24,9 @@ const Header: React.FC<HeaderProps> = ({ currentView, setView }) => {
         </div>
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">Features</button>
-          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">Pricing</button>
-          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">Templates</button>
+          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">产品功能</button>
+          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">价格方案</button>
+          <button onClick={() => setView(AppView.LANDING)} className="text-slate-600 hover:text-primary transition-colors">精选模板</button>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -36,14 +36,15 @@ const Header: React.FC<HeaderProps> = ({ currentView, setView }) => {
               className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-white shadow hover:bg-indigo-700 transition-all hover:scale-105 active:scale-95"
             >
               <Sparkles className="mr-2 h-4 w-4" />
-              Create Resume
+              创建简历
             </button>
           ) : (
             <button 
               className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2 text-sm font-medium text-white shadow hover:bg-slate-800 transition-all"
               onClick={() => window.print()}
+              title="打印预览或另存为"
             >
-               Export Word
+               导出 Word
             </button>
           )}
         </div>
