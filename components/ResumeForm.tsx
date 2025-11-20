@@ -3,7 +3,7 @@ import { ResumeData, TemplateStyle } from '../types';
 import { CloudLightning, CheckCircle, AlertCircle, Palette, FileText, User, Briefcase, Mail } from 'lucide-react';
 
 // REPLACE THIS WITH YOUR ACTUAL N8N WEBHOOK URL
-const WEBHOOK_URL = "YOUR_N8N_WEBHOOK_URL_HERE";
+const WEBHOOK_URL = "https://d92a4c0176f7.ngrok-free.app/webhook-test/generate-resume";
 
 interface ResumeFormProps {
   data: ResumeData;
