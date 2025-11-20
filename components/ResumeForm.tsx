@@ -19,11 +19,11 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
 
   const handleSubmitToCloud = async () => {
     if (!data.email) {
-      alert("Email is required to receive your resume.");
+      alert("请输入邮箱地址以便接收简历。");
       return;
     }
     if (!data.rawResumeContent) {
-      alert("Please paste your experience or current resume content.");
+      alert("请粘贴您的工作经历或简历内容。");
       return;
     }
 
@@ -76,14 +76,24 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
     }
   };
 
+  const getTemplateNameCN = (style: TemplateStyle) => {
+    switch(style) {
+      case 'Business Blue': return '商务蓝';
+      case 'Energetic Red': return '活力红';
+      case 'Minimalist Grey': return '极简灰';
+      case 'Creative': return '创意设计';
+      default: return style;
+    }
+  };
+
   return (
     <div className="w-full max-w-2xl bg-white rounded-xl shadow-sm border p-6 space-y-8 h-full overflow-y-auto pb-32">
       
       {/* Header */}
       <div className="border-b border-slate-100 pb-4">
-        <h2 className="text-2xl font-bold text-slate-800">Resume Details</h2>
+        <h2 className="text-2xl font-bold text-slate-800">简历信息</h2>
         <p className="text-slate-500 text-sm mt-1">
-          Fill in your basics and paste your rough experience. Our AI will handle the formatting and polishing.
+          填写基本信息并粘贴您的经历草稿，AI 将为您自动排版和润色。
         </p>
       </div>
 
@@ -91,7 +101,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
       <section className="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
         <h2 className="text-sm font-bold text-indigo-900 mb-3 flex items-center gap-2 uppercase tracking-wider">
           <Palette className="w-4 h-4" />
-          Select Template Style
+          选择简历风格
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {(['Business Blue', 'Energetic Red', 'Minimalist Grey', 'Creative'] as TemplateStyle[]).map((style) => (
@@ -110,7 +120,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
                 style === 'Minimalist Grey' ? 'bg-slate-600' :
                 'bg-purple-600'
               }`} />
-              {style.replace('Business ', '').replace('Energetic ', '').replace('Minimalist ', '')}
+              {getTemplateNameCN(style)}
             </button>
           ))}
         </div>
@@ -120,22 +130,22 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
       <section className="space-y-4">
         <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
           <User className="w-5 h-5 text-slate-400" />
-          Personal Information
+          个人信息
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-slate-700">Full Name</label>
+            <label className="text-sm font-medium text-slate-700">姓名</label>
             <input 
               type="text" 
               className="w-full rounded-lg border border-slate-300 p-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
               value={data.fullName}
               onChange={(e) => handleInputChange('fullName', e.target.value)}
-              placeholder="Jane Doe"
+              placeholder="例如：张三"
             />
           </div>
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-slate-700">Target Job Title</label>
+            <label className="text-sm font-medium text-slate-700">求职意向 / 目标职位</label>
             <div className="relative">
               <Briefcase className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
               <input 
@@ -143,13 +153,13 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
                 className="w-full pl-9 rounded-lg border border-slate-300 p-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                 value={data.jobTitle}
                 onChange={(e) => handleInputChange('jobTitle', e.target.value)}
-                placeholder="Senior Project Manager" 
+                placeholder="例如：高级产品经理" 
               />
             </div>
           </div>
           <div className="space-y-1.5 md:col-span-2">
             <label className="text-sm font-medium text-slate-700 flex items-center gap-1">
-              Email Address <span className="text-rose-500 text-xs font-bold">(Required)</span>
+              电子邮箱 <span className="text-rose-500 text-xs font-bold">(必填)</span>
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
@@ -160,11 +170,11 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
                 }`}
                 value={data.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                placeholder="jane@company.com"
+                placeholder="zhangsan@example.com"
                 required
               />
             </div>
-            <p className="text-xs text-slate-500">We will send the generated PDF to this email.</p>
+            <p className="text-xs text-slate-500">生成的 PDF 简历将发送至此邮箱。</p>
           </div>
         </div>
       </section>
@@ -174,32 +184,32 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <FileText className="w-5 h-5 text-slate-400" />
-            Experience & Content
+            工作经历与内容
           </h2>
-          <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">AI Powered</span>
+          <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">AI 驱动</span>
         </div>
         
         <div className="space-y-1.5">
           <label className="text-sm font-medium text-slate-700">
-            Paste Your Experience / Current Resume <span className="text-rose-500">*</span>
+            请粘贴您的工作经历 / 简历草稿 (支持AI润色) <span className="text-rose-500">*</span>
           </label>
           <textarea 
             className="w-full h-64 rounded-lg border border-slate-300 p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none text-sm leading-relaxed shadow-inner"
-            placeholder="Paste your entire LinkedIn 'Experience' section here, or dump a rough list of your job history, education, and skills. 
+            placeholder="请在此处粘贴您 LinkedIn 的“经历”部分，或者简单列出您的工作历史、教育背景和技能。
 
-Example:
-Software Engineer at Google (2020-Present)
-- Built search algorithms
-- Managed team of 5
-...
+例如：
+腾讯 高级软件工程师 (2020-至今)
+- 负责微信支付核心模块开发
+- 带领 5 人团队重构交易系统，提升了 30% 性能
+- 熟练掌握 Java, Go, K8s
 
-Education:
-BS CS from Stanford 2019"
+教育背景：
+浙江大学 计算机科学学士 2019"
             value={data.rawResumeContent}
             onChange={(e) => handleInputChange('rawResumeContent', e.target.value)}
           />
           <p className="text-xs text-slate-500">
-            Don't worry about formatting. Our AI will parse this text, structure it into a professional format, and fix grammar.
+            无需担心格式。我们的 AI 会自动解析此文本，将其整理为专业简历格式，并修正语法错误。
           </p>
         </div>
       </section>
@@ -212,16 +222,16 @@ BS CS from Stanford 2019"
               <CheckCircle className="h-8 w-8 text-emerald-600" />
             </div>
             <div>
-              <h3 className="font-bold text-lg">Request Sent!</h3>
+              <h3 className="font-bold text-lg">请求已发送！</h3>
               <p className="text-sm font-medium mt-2">
-                Success! Your resume is being generated and will be sent to your email shortly.
+                成功！您的简历正在生成中，稍后将发送至您的邮箱。
               </p>
             </div>
             <button 
               onClick={() => setSubmitStatus('idle')}
               className="mt-4 text-sm font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-emerald-300 underline-offset-4"
             >
-              Create Another Resume
+              创建新简历
             </button>
           </div>
         ) : (
@@ -234,12 +244,12 @@ BS CS from Stanford 2019"
               {submitStatus === 'submitting' ? (
                 <>
                   <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Generating... (Please wait)
+                  正在生成中... (请稍候)
                 </>
               ) : (
                 <>
                   <CloudLightning className="h-5 w-5 text-yellow-400 group-hover:text-white transition-colors" />
-                  Generate Resume with AI
+                  立即生成简历
                 </>
               )}
             </button>
@@ -247,12 +257,12 @@ BS CS from Stanford 2019"
             {submitStatus === 'error' && (
               <div className="p-3 rounded-lg bg-rose-50 border border-rose-100 text-center text-sm text-rose-600 flex items-center justify-center gap-2">
                 <AlertCircle className="h-4 w-4" />
-                Connection failed. Please verify your network.
+                连接失败，请检查网络。
               </div>
             )}
             
             <p className="text-center text-xs text-slate-400 max-w-xs mx-auto leading-tight">
-              By clicking Generate, you agree to process your data via our secure cloud engine.
+              点击生成即表示您同意通过我们的云端引擎处理您的数据。
             </p>
           </div>
         )}
