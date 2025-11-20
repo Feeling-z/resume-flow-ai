@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, setView }) => {
               className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2 text-sm font-medium text-white shadow hover:bg-slate-800 transition-all"
               onClick={() => window.print()}
             >
-               Export PDF
+               Export Word
             </button>
           )}
         </div>
