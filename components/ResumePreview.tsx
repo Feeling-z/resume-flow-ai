@@ -74,7 +74,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data }) => {
           当前选择：{getTemplateNameCN(data.templateStyle)}
         </h4>
         <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
-          最终生成的 Word 文档将严格遵循此设计规范，支持下载后自由编辑。
+          最终生成的 Word (.docx) 文件将严格遵循此设计规范，方便您二次编辑。
         </p>
       </div>
 
