@@ -93,7 +93,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
       <div className="border-b border-slate-100 pb-4">
         <h2 className="text-2xl font-bold text-slate-800">简历信息</h2>
         <p className="text-slate-500 text-sm mt-1">
-          填写基本信息并粘贴您的经历草稿，AI 将为您自动排版和润色。
+          填写基本信息并粘贴您的简历草稿，AI 将为您自动排版和润色。
         </p>
       </div>
 
