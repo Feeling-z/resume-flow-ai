@@ -174,7 +174,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
                 required
               />
             </div>
-            <p className="text-xs text-slate-500">生成的 Word 简历（可编辑）将发送至此邮箱。</p>
+            <p className="text-xs text-slate-500">生成的 Word (.docx) 简历将发送至此邮箱。</p>
           </div>
         </div>
       </section>
@@ -224,7 +224,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, updateData }) => {
             <div>
               <h3 className="font-bold text-lg">请求已发送！</h3>
               <p className="text-sm font-medium mt-2">
-                成功！您的简历正在生成中，稍后将发送至您的邮箱。
+                成功！您的简历正在生成中，Word 文档稍后将发送至您的邮箱。
               </p>
             </div>
             <button 
