@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
             利用 <span className="text-primary">AI 智能</span> 打造完美简历
           </h1>
           <p className="mx-auto max-w-[700px] text-slate-600 md:text-xl mb-10 leading-relaxed">
-            告别繁琐的 Word 排版。我们的 AI 工作流能深度分析您的经历，瞬间生成专业级简历。比人工写手更智能，比传统模板更高效。
+            告别繁琐的手动排版。我们的 AI 工作流能深度分析您的经历，瞬间生成专业级 Word 简历。支持自由编辑，比人工写手更智能，比传统模板更高效。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
@@ -56,16 +56,16 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
               </div>
               <h3 className="text-xl font-bold">ATS 系统友好</h3>
               <p className="text-slate-500">
-                所有模板均经过严格测试，确保能顺利通过大公司的简历筛选系统 (ATS)。
+                所有模板均经过严格测试，确保生成的文档能顺利通过大公司的简历筛选系统 (ATS)。
               </p>
             </div>
             <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-2xl bg-slate-50 border hover:shadow-md transition-shadow">
               <div className="p-4 bg-rose-100 rounded-full text-rose-600">
                 <LayoutTemplate size={32} />
               </div>
-              <h3 className="text-xl font-bold">一键切换导出</h3>
+              <h3 className="text-xl font-bold">导出 Word 可编辑</h3>
               <p className="text-slate-500">
-                随时切换不同设计风格，无需重新排版。支持一键导出完美格式的 PDF 文件。
+                随时切换不同设计风格，支持一键导出方便二次修改的 Word (.docx) 文件。
               </p>
             </div>
           </div>
@@ -88,7 +88,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-center"><CheckCircle className="mr-3 h-5 w-5 text-indigo-400" /> 1 款简历模板</li>
                 <li className="flex items-center"><CheckCircle className="mr-3 h-5 w-5 text-indigo-400" /> 手动内容录入</li>
-                <li className="flex items-center"><CheckCircle className="mr-3 h-5 w-5 text-indigo-400" /> PDF 导出</li>
+                <li className="flex items-center"><CheckCircle className="mr-3 h-5 w-5 text-indigo-400" /> Word (.docx) 导出</li>
               </ul>
               <button 
                 onClick={() => setView(AppView.BUILDER)}
